@@ -15,6 +15,7 @@ pipeline {
   stages {
     stage('Helm Chart Deploy') {
       steps {
+        sh 'aws eks update-kubeconfig --name ${ENV}-eks'
         sh 'helm upgrade -i ${COMPONENT} roboshop'
       }
 
