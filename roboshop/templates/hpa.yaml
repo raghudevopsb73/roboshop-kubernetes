@@ -2,7 +2,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "roboshop.fullname" . }}
+  name: {{ .Values.component }}
   labels:
     {{- include "roboshop.labels" . | nindent 4 }}
 spec:

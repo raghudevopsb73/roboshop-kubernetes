@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "roboshop.fullname" . }}
+  name: {{ .Values.component }}
   labels:
     {{- include "roboshop.labels" . | nindent 4 }}
 spec:
