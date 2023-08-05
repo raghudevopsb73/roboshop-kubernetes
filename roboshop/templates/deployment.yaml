@@ -74,6 +74,5 @@ spec:
       {{- end }}
       volumes:
         - name: param-volume
-          hostPath:
-            path: /data
-            type: Directory
+          emptyDir:
+            sizeLimit: 500Mi
