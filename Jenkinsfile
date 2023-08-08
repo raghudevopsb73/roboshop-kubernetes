@@ -1,3 +1,7 @@
+node('workstation') {
+  BRANCH_NAMES = sh (script: 'aws ecr describe-images --repository-name ${COMPONENT} --query \'imageDetails[*].imageTags\' --output text | sort ', returnStdout:true).trim()
+}
+
 pipeline {
   agent {
     node {
@@ -8,7 +12,11 @@ pipeline {
   parameters {
     string(name: 'COMPONENT', defaultValue: '', description: 'Which Component')
     string(name: 'ENV', defaultValue: 'prod', description: 'Which Env')
-    string(name: 'APP_VERSION', defaultValue: '2.0.1', description: 'Which Version')
+    choice(
+        name: 'APP_VERSION',
+        choices: "${APP_VERSIONS}",
+        description: 'to refresh the list, go to configure, disable "this build has parameters", launch build (without parameters)to reload the list and stop it, then launch it again (with parameters)'
+    )
 
   }
 
