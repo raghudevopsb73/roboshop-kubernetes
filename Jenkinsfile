@@ -1,5 +1,6 @@
 node('workstation') {
   APP_VERSIONS = sh (script: 'aws ecr describe-images --repository-name ${COMPONENT} --query \'imageDetails[*].imageTags\' --output text | sort ', returnStdout:true).trim()
+  //APP_VERSIONS = sh (script: 'aws ecr describe-images --repository-name ${COMPONENT} --query \'imageDetails[*].imageTags\' --output text | sort ', returnStdout:true).trim()
 }
 
 pipeline {
