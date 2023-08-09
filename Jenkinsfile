@@ -11,10 +11,10 @@ pipeline {
   }
 
   parameters {
-    string(name: 'COMPONENT', defaultValue: '', description: 'Which Component')
+    string(name: 'COMPONENTx', defaultValue: '', description: 'Which Component')
     string(name: 'ENV', defaultValue: 'prod', description: 'Which Env')
     choice(
-        name: 'APP_VERSION',
+        name: 'APP_VERSIONx',
         choices: "${APP_VERSIONS}",
         description: 'to refresh the list, go to configure, disable "this build has parameters", launch build (without parameters)to reload the list and stop it, then launch it again (with parameters)'
     )
